@@ -14,9 +14,9 @@ public class GildedRose
 
     public void UpdateQuality()
     {
-        for (var i = 0; i < _items.Count; i++)
+        foreach(var item in _items)
         {
-            UpdateItem(_items[i]);
+            UpdateItem(item);
         }
     }
 

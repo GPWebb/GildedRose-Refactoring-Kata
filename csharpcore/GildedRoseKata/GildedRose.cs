@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GildedRoseKata;
+using System.Collections.Generic;
 
 namespace GildedRoseKata;
 
@@ -21,35 +22,35 @@ public class GildedRose
 
     private void UpdateItem(Item item)
     {
-        if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+        if (item.Name != Constants.AgedBrie && item.Name != Constants.BackstagePasses)
         {
             if (item.Quality > 0)
             {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
+                if (item.Name != Constants.Sulfuras)
                 {
-                    item.Quality = item.Quality - 1;
+                    item.Quality--;
                 }
             }
         }
         else
         {
-            if (item.Quality < 50)
+            if (item.Quality < Constants.ItemQualityUpperThreshold)
             {
                 item.Quality++;
 
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name == Constants.BackstagePasses)
                 {
-                    if (item.SellIn < 11)
+                    if (item.SellIn < Constants.SellInHigh)
                     {
-                        if (item.Quality < 50)
+                        if (item.Quality < Constants.ItemQualityUpperThreshold)
                         {
                             item.Quality++;
                         }
                     }
 
-                    if (item.SellIn < 6)
+                    if (item.SellIn < Constants.SellInMid)
                     {
-                        if (item.Quality < 50)
+                        if (item.Quality < Constants.ItemQualityUpperThreshold)
                         {
                             item.Quality++;
                         }
@@ -58,20 +59,20 @@ public class GildedRose
             }
         }
 
-        if (item.Name != "Sulfuras, Hand of Ragnaros")
+        if (item.Name != Constants.Sulfuras)
         {
             item.SellIn--;
         }
 
-        if (item.SellIn < 0)
+        if (item.SellIn < Constants.SellInLow)
         {
-            if (item.Name != "Aged Brie")
+            if (item.Name != Constants.AgedBrie)
             {
-                if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (item.Name != Constants.BackstagePasses)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
+                        if (item.Name != Constants.Sulfuras)
                         {
                             item.Quality--;
                         }
@@ -84,7 +85,7 @@ public class GildedRose
             }
             else
             {
-                if (item.Quality < 50)
+                if (item.Quality < Constants.ItemQualityUpperThreshold)
                 {
                     item.Quality++;
                 }
